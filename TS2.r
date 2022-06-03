@@ -84,7 +84,7 @@ TS2 %>%
   summarise(Count = n(), .groups = "drop") %>%
   ggplot(mapping = aes(x = Rarity, y = Power)) +
   geom_tile(mapping = aes(fill = Count), color = "white") +
-  geom_text(mapping = aes(label = paste0("(",Count,")")), size = 3) +
+  geom_text(mapping = aes(label = paste0("(",Count,")")), size = 3, fontface = "bold") +
   scale_fill_distiller(palette = "YlGn") +
   facet_wrap(~ Tier) +
   labs(title = "TRAINSTATION 2") +
