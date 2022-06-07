@@ -7,6 +7,7 @@ library(janitor)
 ## raw data ----
 TS2_raw <- "Name,Tier,Rarity,Power,Capmax
 ATSF 3000,2,violet,steam,45
+BNR CLASS P GARRAT,4,blue,steam,30
 CLASS A-1 BERKSHIRE,3,silver,steam,20
 CRAMPTON,1,gold,steam,60
 C&O T-1,4,silver,steam,20
@@ -19,6 +20,7 @@ DR-BAUREIHE E 93,3,violet,electric,45
 DR 18 201,2,blue,steam,30
 DRG V 140 001,4,silver,diesel,20
 EASTER MIREO,2,violet,electric,60
+EMD DD35,4,violet,diesel,45
 EP-2 BIPOLAR,2,gold,electric,60
 ERIE K-5A,3,blue,steam,30
 ERIEL L-1,1,gold,steam,60
@@ -35,6 +37,7 @@ LB&SCR B4,1,blue,steam,30
 LMS HUGHES CRAB,3,violet,steam,45
 LNER A4 MALLARD,1,gold,steam,60
 LNER K3,2,silver,steam,20
+LNER V2 GREEN ARROW,4,violet,steam,45
 LRZ 14,2,blue,diesel,30
 MILWAUKEE ROAD,4,silver,steam,20
 MILWAUKEE ROAD EF-1,2,blue,electric,30
@@ -48,6 +51,7 @@ SAR CLASS 8E,4,silver,electric,30
 SBB AE 4/7,3,violet,electric,45
 SECR N CLASS,2,silver,steam,20
 SHAY CLASS C,1,violet,steam,45
+SJ D,4,blue,electric,30
 STAR CLASS 4000,1,silver,steam,20
 SŽD EMCH 3,3,violet,diesel,45
 TFR CLASS 19E,3,gold,electric,80
