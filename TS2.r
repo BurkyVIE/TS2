@@ -68,7 +68,9 @@ fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
              rat = c(COMMON = "silver", RARE = "blue", V_RARE = "violet", X_RARE = "gold"),
              rar = c(SILVER = "silver", BLUE = "blue", VIOLET = "violet", GOLD = "gold"),
              pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"),
-             cols = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"))
+             cols = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"), # original
+             cols = c(SILVER = "#a6acb7", BLUE = "#4db0fa", VIOLET = "#a052ff", GOLD = "#ceb903") # 25 % darker
+             )
 
 # TIDY ----
 TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>% 
