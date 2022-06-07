@@ -24,6 +24,7 @@ EMD DD35,4,violet,diesel,45
 EP-2 BIPOLAR,2,gold,electric,60
 ERIE K-5A,3,blue,steam,30
 ERIEL L-1,1,gold,steam,60
+ÉTAT 141,4,blue,steam,30
 FLYEUROPE CARAVAGGIO,3,blue,electric,40
 FS CLASS 670,2,violet,steam,45
 FS CLASS 740,1,silver,steam,20
