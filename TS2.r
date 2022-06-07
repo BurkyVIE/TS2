@@ -5,7 +5,7 @@ library(janitor)
 # DATA ----
 
 ## raw data ----
-TS2_raw <- "Name,Tier,Rarity,Power,Capmax
+TS2_raw <- "Name,Tier,Rarity_raw,Power_raw,Capmax
 ATSF 3000,2,violet,steam,45
 BNR CLASS P GARRAT,4,blue,steam,30
 CLASS A-1 BERKSHIRE,3,silver,steam,20
@@ -67,14 +67,16 @@ VICTORIAN C CLASS,2,silver,steam,20
 fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
              rat = c(COMMON = "silver", RARE = "blue", V_RARE = "violet", X_RARE = "gold"),
              rar = c(SILVER = "silver", BLUE = "blue", VIOLET = "violet", GOLD = "gold"),
-             pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"))
+             pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"),
+             cols = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"))
 
 # TIDY ----
 TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>% 
   mutate(Country = factor(Tier, levels = fcts$con, labels = names(fcts$con)),
-         Rating = factor(Rarity, levels = fcts$rat, labels = names(fcts$rat)),
-         Rarity = factor(Rarity, levels = fcts$rar, labels = names(fcts$rar)),
-         Power = factor(Power, levels = fcts$pow, labels = names(fcts$pow))) %>% 
+         Rarity = factor(Rarity_raw, levels = fcts$rar, labels = names(fcts$rar)),
+         Rating = factor(Rarity_raw, levels = fcts$rat, labels = names(fcts$rat)),
+         Power = factor(Power_raw, levels = fcts$pow, labels = names(fcts$pow))) %>% 
+  select(-ends_with("_raw")) %>% 
   arrange(Tier, Rarity, Power, Name)
 
 # GRAPH ----
