@@ -32,7 +32,7 @@ GER CLASS S69,1,silver,steam,20
 GWR 3041 THE QUEEN,1,violet,steam,45
 GWR 6000 CLASS KING,3,blue,steam,30
 GWR CITY OF TRURO,3,blue,steam,30
-GWRT OLTON HALL,3,gold,steam,60
+GWR OLTON HALL,3,gold,steam,60
 KROKODIL CE 6/8,2,violet,electric,45
 LB&SCR B4,1,blue,steam,30
 LMS HUGHES CRAB,3,violet,steam,45
