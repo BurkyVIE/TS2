@@ -82,6 +82,7 @@ TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>%
   arrange(Tier, Rarity, Power, Name)
 
 # GRAPH ----
+windows(16, 9)
 TS2 %>%
   mutate(Tier = paste(Tier, "-", Country)) %>% 
   group_by(Tier, Rarity, Power) %>%
@@ -93,8 +94,10 @@ TS2 %>%
   facet_wrap(~ Tier) +
   labs(title = "TRAINSTATION 2") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right") -> p
+  plot(p)
 
+windows(16, 9)
 TS2 %>%
   ggplot(mapping = aes(x = Capmax, color = Rarity)) +
   geom_density(mapping = aes(fill = Rarity), alpha = .5) +
@@ -103,8 +106,10 @@ TS2 %>%
   scale_color_manual(values = fcts$cols) +
   scale_fill_manual(values = fcts$cols) +
   facet_wrap(~ Country, scales = "free_y") +
+  labs(title = "TRAINSTATION 2") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right") -> p
+plot(p)
 
 # TABULATE ----
 TS2 %>% 
