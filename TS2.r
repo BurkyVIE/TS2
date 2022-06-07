@@ -96,6 +96,7 @@ TS2 %>%
 TS2 %>%
   ggplot(mapping = aes(x = Capmax, color = Rarity)) +
   geom_density(mapping = aes(fill = Rarity), alpha = .5) +
+  scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 25), minor_breaks = seq(0, 100, by = 5), expand = c(0, 0)) +
   scale_color_manual(values = fcts$cols) +
   scale_fill_manual(values = fcts$cols) +
   facet_wrap(~ Country, scales = "free_y")
