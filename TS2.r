@@ -114,7 +114,8 @@ plot(p)
 # TABULATE ----
 TS2 %>% 
   tabyl(Power, Rarity, Tier) %>% 
-  adorn_totals(c("row", "col"))
+  adorn_totals(c("row", "col")) %>%
+  print()
 
 # CLEAN UP ----
 rm(TS2_raw, fcts)
