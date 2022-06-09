@@ -65,7 +65,7 @@ VICTORIAN C CLASS,2,silver,steam,20
 "
 ## factor definitions ----
 fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
-             rat = c(COMMON = "silver", RARE = "blue", V_RARE = "violet", X_RARE = "gold"),
+             rat = c(COMMON = "silver", RARE = "blue", EPIC = "violet", LEGENDARY = "gold"),
              rar = c(SILVER = "silver", BLUE = "blue", VIOLET = "violet", GOLD = "gold"),
              pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"),
              # cols = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"), # original
