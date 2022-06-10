@@ -71,8 +71,8 @@ fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
              rat = c(COMMON = "silver", RARE = "blue", EPIC = "violet", LEGENDARY = "gold"),
              rar = c(SILVER = "silver", BLUE = "blue", VIOLET = "violet", GOLD = "gold"),
              pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"),
-             # cols = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"), # original
-             cols = c(SILVER = "#a6acb7", BLUE = "#4db0fa", VIOLET = "#a052ff", GOLD = "#ceb903") # 25 % darker
+             # col = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"), # original
+             col = c(SILVER = "#a6acb7", BLUE = "#4db0fa", VIOLET = "#a052ff", GOLD = "#ceb903") # 25 % darker
              )
 
 # TIDY ----
@@ -106,8 +106,8 @@ TS2 %>%
   geom_density(mapping = aes(fill = Rarity), size = 1.5, alpha = .5) +
   scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 25), minor_breaks = seq(0, 100, by = 5), expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
-  scale_color_manual(values = fcts$cols) +
-  scale_fill_manual(values = fcts$cols) +
+  scale_color_manual(values = fcts$col) +
+  scale_fill_manual(values = fcts$col) +
   facet_wrap(~ Country, scales = "free_y") +
   labs(title = "TRAINSTATION 2") +
   theme_bw() +
