@@ -85,7 +85,8 @@ TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>%
   arrange(Tier, Rarity, Power, Name)
 
 # GRAPH ----
-windows(16, 9)
+
+## number of locos Rarity vs Power per Country ----
 TS2 %>%
   mutate(Tier = paste(Tier, "-", Country)) %>% 
   group_by(Tier, Rarity, Power) %>%
@@ -97,22 +98,28 @@ TS2 %>%
   facet_wrap(~ Tier) +
   labs(title = "TRAINSTATION 2") +
   theme_bw() +
-  theme(legend.position = "right") -> p
-  plot(p)
+  theme(legend.position = "right") -> p1
 
-windows(16, 9)
+## density of Capmax and Rarity per Country ----
 TS2 %>%
+  mutate(Tier = paste(Tier, "-", Country)) %>% 
   ggplot(mapping = aes(x = Capmax, color = Rarity)) +
   geom_density(mapping = aes(fill = Rarity), size = 1.5, alpha = .5) +
   scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 25), minor_breaks = seq(0, 100, by = 5), expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = fcts$col) +
   scale_fill_manual(values = fcts$col) +
-  facet_wrap(~ Country, scales = "free_y") +
+  facet_wrap(~ Tier, scales = "free_y") +
   labs(title = "TRAINSTATION 2") +
   theme_bw() +
-  theme(legend.position = "right") -> p
-plot(p)
+  theme(legend.position = "right") -> p2
+
+## do the plot ----
+windows(16, 9)
+plot(p1)
+
+windows(16, 9)
+plot(p2)
 
 # TABULATE ----
 TS2 %>% 
@@ -121,4 +128,4 @@ TS2 %>%
   print()
 
 # CLEAN UP ----
-rm(TS2_raw, fcts)
+rm(TS2_raw, fcts, p1, p2)
