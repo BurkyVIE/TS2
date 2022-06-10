@@ -57,7 +57,7 @@ SJ D,4,blue,electric,30
 STAR CLASS 4000,1,silver,steam,20
 SŽD EMCH 3,3,violet,diesel,45
 TFR CLASS 19E,3,gold,electric,80
-UP CHALENGER,4,gold,steam,60
+UP CHALLENGER,4,gold,steam,60
 UP CLASS 9000,3,violet,steam,45
 UP GTEL 3RD GEN,3,violet,diesel,45
 UP GTEL VERANDA,3,violet,diesel,45
