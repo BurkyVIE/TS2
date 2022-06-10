@@ -9,6 +9,7 @@ TS2_raw <- "Name,Tier,Rarity_raw,Power_raw,Capmax
 ATSF 3000,2,violet,steam,45
 BNR CLASS P GARRAT,4,blue,steam,30
 CLASS A-1 BERKSHIRE,3,silver,steam,20
+CN NORTHERN U-4,4,silver,steam,20
 CRAMPTON,1,gold,steam,60
 C&O T-1,4,silver,steam,20
 DB-BAUREIHE V 100,2,silver,diesel,20
@@ -56,6 +57,7 @@ SJ D,4,blue,electric,30
 STAR CLASS 4000,1,silver,steam,20
 SŽD EMCH 3,3,violet,diesel,45
 TFR CLASS 19E,3,gold,electric,80
+UP CHALENGER,4,gold,steam,60
 UP CLASS 9000,3,violet,steam,45
 UP GTEL 3RD GEN,3,violet,diesel,45
 UP GTEL VERANDA,3,violet,diesel,45
@@ -100,7 +102,7 @@ TS2 %>%
 windows(16, 9)
 TS2 %>%
   ggplot(mapping = aes(x = Capmax, color = Rarity)) +
-  geom_density(mapping = aes(fill = Rarity), alpha = .5) +
+  geom_density(mapping = aes(fill = Rarity), size = 1.5, alpha = .5) +
   scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 25), minor_breaks = seq(0, 100, by = 5), expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = fcts$cols) +
