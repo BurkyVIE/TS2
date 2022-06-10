@@ -65,6 +65,7 @@ UP FEF-3,4,blue,steam,30
 USRA HEAVY PACIFIC,3,silver,steam,20
 VICTORIAN C CLASS,2,silver,steam,20
 "
+
 ## factor definitions ----
 fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
              rat = c(COMMON = "silver", RARE = "blue", EPIC = "violet", LEGENDARY = "gold"),
