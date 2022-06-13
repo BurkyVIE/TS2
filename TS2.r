@@ -7,6 +7,7 @@ library(janitor)
 ## raw data ----
 TS2_raw <- "Name,Tier,Rarity_raw,Power_raw,Capmax
 ATSF 3000,2,violet,steam,45
+BURLINGTON ZEPHYR,4,blue,diesel,30
 BNR CLASS P GARRAT,4,blue,steam,30
 CLASS A-1 BERKSHIRE,3,silver,steam,20
 CN NORTHERN U-4,4,silver,steam,20
