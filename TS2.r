@@ -38,6 +38,7 @@ GWR OLTON HALL,3,gold,steam,60
 KROKODIL CE 6/8,2,violet,electric,45
 LB&SCR B4,1,blue,steam,30
 LMS HUGHES CRAB,3,violet,steam,45
+LMS STAINER CLASS 8F,4,silver,steam,20
 LNER A4 MALLARD,1,gold,steam,60
 LNER K3,2,silver,steam,20
 LNER V2 GREEN ARROW,4,violet,steam,45
