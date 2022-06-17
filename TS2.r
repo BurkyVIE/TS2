@@ -22,7 +22,7 @@ DR-BAUREIHE E 93,3,violet,electric,45
 DR 18 201,2,blue,steam,30
 DRG CLASS E18,4,blue,electric,30
 DRG V 140 001,4,silver,diesel,20
-DUCHESS OF HAMILTON,4,violet,stem,45
+DUCHESS OF HAMILTON,4,violet,steam,45
 EASTER MIREO,2,violet,electric,60
 EMD DD35,4,violet,diesel,45
 EP-2 BIPOLAR,2,gold,electric,60
