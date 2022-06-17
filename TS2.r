@@ -7,8 +7,11 @@ library(janitor)
 ## raw data ----
 TS2_raw <- "Name,Tier,Rarity_raw,Power_raw,Capmax
 ATSF 3000,2,violet,steam,45
+(BALDWIN 60000,3,gold,steam,60
+(BLACK FIVE,4,violet,steam,45
 BURLINGTON ZEPHYR,4,blue,diesel,30
 BNR CLASS P GARRAT,4,blue,steam,30
+(CFV BILLARD,4,violet,diesel,45
 CLASS A-1 BERKSHIRE,3,silver,steam,20
 CN NORTHERN U-4,4,silver,steam,20
 CRAMPTON,1,gold,steam,60
@@ -20,16 +23,21 @@ DR-BAUREIHE 86,3,silver,steam,20
 DR-BAUREIHE E 60,3,silver,electric,20
 DR-BAUREIHE E 93,3,violet,electric,45
 DR 18 201,2,blue,steam,30
+(DRG 877 HAMBURG FLYER,4,violet,diesel,45
 DRG CLASS E18,4,blue,electric,30
+(DRG CLASS E 19,4,violet,electric,45
 DRG V 140 001,4,silver,diesel,20
 DUCHESS OF HAMILTON,4,violet,steam,45
 EASTER MIREO,2,violet,electric,60
+(EMC E3,4,blue,diesel,30
 EMD DD35,4,violet,diesel,45
+(EMD DDA40X,3,gold,diesel60
 EP-2 BIPOLAR,2,gold,electric,60
 ERIE K-5A,3,blue,steam,30
 ERIEL L-1,1,gold,steam,60
 ÉTAT 141,4,blue,steam,30
 FLYEUROPE CARAVAGGIO,3,blue,electric,40
+(FLYING SCOTSMAN,4,gold,steam,60
 FS CLASS 670,2,violet,steam,45
 FS CLASS 740,1,silver,steam,20
 GER CLASS S69,1,silver,steam,20
@@ -52,6 +60,7 @@ NORD 140,1,blue,steam,30
 NSB EL 4,3,blue,electric,30
 PREUẞISCHE P8,1,silver,steam,20
 PREUẞISCHE T 14,2,blue,steam,30
+(PRR GG1,4,gold,electric,60
 PRR K-4,2,blue,steam,30
 SAR CLASS 8E,4,silver,electric,30
 SBB AE 4/7,3,violet,electric,45
@@ -61,6 +70,7 @@ SJ D,4,blue,electric,30
 STAR CLASS 4000,1,silver,steam,20
 SŽD EMCH 3,3,violet,diesel,45
 TFR CLASS 19E,3,gold,electric,80
+(UP BIG BOY,2,gold,steam,60
 UP CHALLENGER,4,gold,steam,60
 UP CLASS 9000,3,violet,steam,45
 UP GTEL 3RD GEN,3,violet,diesel,45
@@ -77,16 +87,18 @@ fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
              pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"),
              # col = c(SILVER = "#d6d9de", BLUE = "#9cd3fc", VIOLET = "#cea6ff", GOLD = "#fbe20b"), # original
              col = c(SILVER = "#a6acb7", BLUE = "#4db0fa", VIOLET = "#a052ff", GOLD = "#ceb903") # 25 % darker
-             )
+)
 
 # TIDY ----
 TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>% 
   mutate(Country = factor(Tier, levels = fcts$con, labels = names(fcts$con)),
          Rarity = factor(Rarity_raw, levels = fcts$rar, labels = names(fcts$rar)),
          Rating = factor(Rarity_raw, levels = fcts$rat, labels = names(fcts$rat)),
-         Power = factor(Power_raw, levels = fcts$pow, labels = names(fcts$pow))) %>% 
+         Power = factor(Power_raw, levels = fcts$pow, labels = names(fcts$pow)),
+         Active = !str_starts(Name, "\\(")) %>% 
   select(-ends_with("_raw")) %>% 
-  arrange(Tier, Rarity, Power, Name)
+  arrange(Tier, Rarity, Power, Name) %>% 
+  filter(Active)
 
 # GRAPH ----
 
