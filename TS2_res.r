@@ -19,6 +19,8 @@ gasoline,NA,NA,NA
 grain,NA,NA,NA
 livestock,NA,NA,NA
 flour,NA,NA,NA
+(steel,40,iron ore,10
+(steel,40,coal,30
 copper,30,copper ore,40
 copper,30,coal,40
 iron powder,30,iron ore,30
@@ -29,6 +31,7 @@ copper wire,110,copper,80
 copper wire,110,copper ore,30
 sheet steel,70,steel,40
 sheet steel,70,iron ore,30
+(timber,40,wood,40
 barrel,210,wood,100
 barrel,210,copper wire,110
 plywood,160,glue,100
@@ -42,7 +45,9 @@ table,150,saw blade,70
 closet,200,plywood,160
 closet,200,nails,40
 glue,100,crude oil,50
-glue,100,wood,50"
+glue,100,wood,50
+milk,80,livestock,80
+"
 
 # TIDY ----
 
