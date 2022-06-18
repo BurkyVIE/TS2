@@ -29,7 +29,7 @@ DRG CLASS E18,4,blue,electric,30
 DRG V 140 001,4,silver,diesel,20
 DUCHESS OF HAMILTON,4,violet,steam,45
 EASTER MIREO,2,violet,electric,60
-(EMC E3,4,blue,diesel,30
+EMC E3,4,blue,diesel,30
 EMD DD35,4,violet,diesel,45
 (EMD DDA40X,3,gold,diesel60
 EP-2 BIPOLAR,2,gold,electric,60
