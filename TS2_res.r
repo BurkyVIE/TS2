@@ -47,6 +47,7 @@ closet,200,nails,40
 glue,100,crude oil,50
 glue,100,wood,50
 milk,80,livestock,80
+plastics,100,crude oil,100
 "
 
 # TIDY ----
