@@ -25,7 +25,7 @@ DR-BAUREIHE E 93,3,violet,electric,45
 DR 18 201,2,blue,steam,30
 (DRG 877 HAMBURG FLYER,4,violet,diesel,45
 DRG CLASS E18,4,blue,electric,30
-(DRG CLASS E 19,4,violet,electric,45
+DRG CLASS E 19,4,violet,electric,45
 DRG V 140 001,4,silver,diesel,20
 DUCHESS OF HAMILTON,4,violet,steam,45
 EASTER MIREO,2,violet,electric,60
