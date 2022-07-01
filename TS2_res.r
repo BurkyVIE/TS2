@@ -48,6 +48,7 @@ glue,100,crude oil,50
 glue,100,wood,50
 milk,80,livestock,80
 plastics,100,crude oil,100
+wool,120,livestock,120
 "
 
 # TIDY ----
