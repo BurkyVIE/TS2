@@ -38,6 +38,7 @@ ERIEL L-1,1,gold,steam,60
 ÉTAT 141,4,blue,steam,30
 FLYEUROPE CARAVAGGIO,3,blue,electric,40
 (FLYING SCOTSMAN,4,gold,steam,60
+FM H-24-66 TRAIN MASTER,4,silver,diesel,30
 FS CLASS 670,2,violet,steam,45
 FS CLASS 740,1,silver,steam,20
 GER CLASS S69,1,silver,steam,20
