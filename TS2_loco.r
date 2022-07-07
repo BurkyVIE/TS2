@@ -132,12 +132,24 @@ TS2_loco %>%
   theme_bw() +
   theme(legend.position = "right") -> p2
 
+## count of engines per tier and capmax ----
+TS2_loco |> 
+  ggplot(mapping = aes(x = Tier, y = Capmax, size = ..n.., color = Rating)) +
+  scale_fill_manual(values = fcts$col) +
+  stat_sum() +
+  labs(title = "TRAINSTATION 2") +
+  theme_bw() +
+  theme(legend.position = "right") -> p3
+
 ## do the plot ----
 windows(16, 9)
 plot(p1)
 
 windows(16, 9)
 plot(p2)
+
+windows(11, 11)
+plot(p3)
 
 # TABULATE ----
 TS2_loco %>% 
@@ -146,4 +158,4 @@ TS2_loco %>%
   print()
 
 # CLEAN UP ----
-rm(TS2_loco_raw, fcts, p1, p2)
+rm(TS2_loco_raw, fcts, p1, p2, p3)
