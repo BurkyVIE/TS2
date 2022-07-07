@@ -15,6 +15,14 @@ TS2_make <- function (what, much = 1, data = TS2_reso) {
   work <- filter(data, Good == what)
   need <- head(work, 1) |> select(Good:Patch)
   
+  ## root selected ----
+  if(is.na(need$Patch)) {
+    need$Patch <- much
+    cat("for", much, need$Good, "get:\n\n")
+    return(as.data.frame(need))
+    
+    break()
+  }
   
   ## loop ----
   while(dim(work)[1] > 0) {
