@@ -4,7 +4,7 @@ library(tidyverse)
 # DATA ----
 
 ## raw data ----
-res_raw <- "Good,Patch,Component,Quantity
+TS2_reso_raw <- "Good,Patch,Component,Quantity
 coal,NA,NA,NA
 iron ore,NA,NA,NA
 steel,NA,NA,NA
@@ -51,7 +51,8 @@ wool,120,livestock,120
 # TIDY ----
 
 ## import ----
-res_dat <- read_delim(res_raw, col_types = "cici", lazy = FALSE)
+TS2_reso <- read_delim(TS2_reso_raw, col_types = "cici", lazy = FALSE) %>% 
+  arrange(Good)
 
 # CLEAN UP ----
-rm(res_raw)
+rm(TS2_reso_raw)
