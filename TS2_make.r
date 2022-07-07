@@ -1,14 +1,22 @@
-TS2_make <- function (what, much = 1, data = res_dat) {
+TS2_make <- function (what, much = 1, data = TS2_reso_dat) {
+
+  # LIBRARIES ----
+  library(tidyverse)
   
+  # FUNCTIONS ----  
   '%notin%' <- Negate('%in%')
   
-  # initialise
+  # BODY ----
+  
+  ## initialise ----
   result <- NULL
   root <- filter(data, is.na(Component)) |> pull(Good)
   
   work <- filter(data, Good == what)
   need <- head(work, 1) |> select(Good:Patch)
   
+  
+  ## loop ----
   while(dim(work)[1] > 0) {
     result <- bind_rows(result,
                         filter(work, Component %in% root) |> select(Component:Quantity))
@@ -21,6 +29,7 @@ TS2_make <- function (what, much = 1, data = res_dat) {
     summarise(Quantity = sum(Quantity), .groups = "drop") |> 
     mutate(Quantity = Quantity * ceiling(much / pull(need, Patch)))
     
+  ## return ----
   cat("for", much, need$Good, "get:\n\n")
   return(as.data.frame(result))
 }
