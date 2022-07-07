@@ -21,6 +21,6 @@ TS2_make <- function (what, much = 1, data = res_dat) {
     summarise(Quantity = sum(Quantity), .groups = "drop") |> 
     mutate(Quantity = Quantity * ceiling(much / pull(need, Patch)))
     
-  cat("\n\nfor", much, need$Good, "get:\n\n")
+  cat("for", much, need$Good, "get:\n\n")
   return(as.data.frame(result))
 }
