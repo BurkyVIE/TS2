@@ -1,43 +1,39 @@
-TS2_make <- function (what, much = 1, data = TS2_reso) {
-
+TS2_make <- function (what, units = 1, data = TS2_reso) {
+  
   # LIBRARIES ----
   library(tidyverse)
-  
-  # FUNCTIONS ----  
-  '%notin%' <- Negate('%in%')
   
   # BODY ----
   
   ## initialise ----
-  result <- NULL
-  root <- filter(data, is.na(Component)) |> pull(Good)
+  source("TS2_reso.r")
   
   work <- filter(data, Good == what)
   need <- head(work, 1) |> select(Good:Patch)
   
   ## root selected ----
   if(is.na(need$Patch)) {
-    need$Patch <- much
-    cat("for", much, need$Good, "get:\n\n")
+    need$Patch <- units
+    cat("for", units, need$Good, "get:\n\n")
     return(as.data.frame(need))
     
     break()
   }
   
   ## loop ----
-  while(dim(work)[1] > 0) {
-    result <- bind_rows(result,
-                        filter(work, Component %in% root) |> select(Component:Quantity))
-    work <- filter(work, Component %notin% root)
-    work_new <- filter(data, Good %in% work$Component) 
-    work <- work_new
-  }
+  while(!all(work$Basic1)) {
+    remainder <- filter(work, !Basic1) |> pull(Component)
+    work <- bind_rows(
+      filter(work, Basic1),
+      filter(data, Good %in% remainder)
+    )
+    }
   
-  result <- result |> group_by(Component) |> 
+  work <- work |> group_by(Component) |> 
     summarise(Quantity = sum(Quantity), .groups = "drop") |> 
-    mutate(Quantity = Quantity * ceiling(much / pull(need, Patch)))
-    
+    mutate(Quantity = Quantity * ceiling(units / pull(need, Patch)))
+  
   ## return ----
-  cat("for", much, need$Good, "get:\n\n")
-  return(as.data.frame(result))
+  cat("for", units, need$Good, "get:\n\n")
+  return(as.data.frame(work))
 }
