@@ -1,4 +1,4 @@
-TS2_make <- function (what, much = 1, data = TS2_reso_dat) {
+TS2_make <- function (what, much = 1, data = TS2_reso) {
 
   # LIBRARIES ----
   library(tidyverse)
