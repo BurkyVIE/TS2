@@ -8,7 +8,7 @@ library(janitor)
 TS2_raw <- "Name,Tier,Rarity_raw,Power_raw,Capmax
 ATSF 3000,2,violet,steam,45
 (BALDWIN 60000,3,gold,steam,60
-(BLACK FIVE,4,violet,steam,45
+BLACK FIVE,4,violet,steam,45
 BURLINGTON ZEPHYR,4,blue,diesel,30
 BNR CLASS P GARRAT,4,blue,steam,30
 (CFV BILLARD,4,violet,diesel,45
@@ -31,7 +31,7 @@ DUCHESS OF HAMILTON,4,violet,steam,45
 EASTER MIREO,2,violet,electric,60
 EMC E3,4,blue,diesel,30
 EMD DD35,4,violet,diesel,45
-(EMD DDA40X,3,gold,diesel60
+(EMD DDA40X,3,gold,diesel,60
 EP-2 BIPOLAR,2,gold,electric,60
 ERIE K-5A,3,blue,steam,30
 ERIEL L-1,1,gold,steam,60
@@ -83,8 +83,7 @@ VICTORIAN C CLASS,2,silver,steam,20
 "
 
 ## factor definitions ----
-fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L, CANADA = 5L, FINLAND = 6L, NETHERLANDS = 7L,
-                     AUSTRALIA = 8L, SWEDEN = 9L, JAPAN = 10L, EGYPT = 11L),
+fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L),
              rat = c(COMMON = "silver", RARE = "blue", EPIC = "violet", LEGENDARY = "gold"),
              rar = c(SILVER = "silver", BLUE = "blue", VIOLET = "violet", GOLD = "gold"),
              pow = c(STEAM = "steam", DIESEL = "diesel", ELECTRIC = "electric"),
@@ -93,7 +92,7 @@ fcts <- list(con = c(BRITAIN = 1L, GERMANY = 2L, USA = 3L, FRANCE = 4L, CANADA =
 )
 
 # TIDY ----
-TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>% 
+TS2_loco <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>% 
   mutate(Country = factor(Tier, levels = fcts$con, labels = names(fcts$con)),
          Rarity = factor(Rarity_raw, levels = fcts$rar, labels = names(fcts$rar)),
          Rating = factor(Rarity_raw, levels = fcts$rat, labels = names(fcts$rat)),
@@ -106,7 +105,7 @@ TS2 <- read_delim(TS2_raw, col_types = "ciffd", lazy = FALSE) %>%
 # GRAPH ----
 
 ## number of locos Rarity vs Power per Country ----
-TS2 %>%
+TS2_loco %>%
   mutate(Tier = paste(Tier, "-", Country)) %>% 
   group_by(Tier, Rarity, Power) %>%
   summarise(Count = n(), .groups = "drop") %>%
@@ -120,7 +119,7 @@ TS2 %>%
   theme(legend.position = "right") -> p1
 
 ## density of Capmax and Rarity per Country ----
-TS2 %>%
+TS2_loco %>%
   mutate(Tier = paste(Tier, "-", Country)) %>% 
   ggplot(mapping = aes(x = Capmax, color = Rarity)) +
   geom_density(mapping = aes(fill = Rarity), size = 1.5, alpha = .5) +
@@ -141,9 +140,9 @@ windows(16, 9)
 plot(p2)
 
 # TABULATE ----
-TS2 %>% 
+TS2_loco %>% 
   tabyl(Power, Rarity, Tier) %>% 
-  adorn_totals(c("row", "col")) %>%
+  adorn_totals(c("row", "col")) %>% 
   print()
 
 # CLEAN UP ----
