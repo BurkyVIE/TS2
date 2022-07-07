@@ -3,9 +3,6 @@ library(tidyverse)
 
 # DATA ----
 
-## search for ----
-sf <- "copper wire"
-
 ## raw data ----
 res_raw <- "Good,Patch,Component,Quantity
 coal,NA,NA,NA
