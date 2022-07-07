@@ -50,9 +50,13 @@ wool,120,livestock,120
 
 # TIDY ----
 
-## import ----
-TS2_reso <- read_delim(TS2_reso_raw, col_types = "cici", lazy = FALSE) %>% 
+## import ---- 
+TS2_reso <- read_delim(TS2_reso_raw, col_types = "cici", lazy = FALSE)  |> 
+  mutate(Basic = is.na(Component)) |>
   arrange(Good)
+
+TS2_reso <- TS2_reso |>
+  left_join(select(TS2_reso, c(Good, Basic)), by = c("Component" = "Good"), suffix = c("0", "1"))
 
 # CLEAN UP ----
 rm(TS2_reso_raw)
