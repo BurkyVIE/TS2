@@ -56,24 +56,5 @@ wool,120,livestock,120
 ## import ----
 res_dat <- read_delim(res_raw, col_types = "cici", lazy = FALSE)
 
-## expand ----
-res_full <- left_join(
-  left_join(
-    res_dat, select(res_dat, -Patch), by = c("Component" = "Good"), suffix = c("", ".1")),
-  select(res_dat, -Patch), by = c("Component.1" = "Good"), suffix = c("", ".2"))
-
-# CALCULATE ----
-bind_rows(
-  select(res_full, c(Good, Patch, Component = Component.2, Quantity = Quantity.2)) %>% filter(!is.na(Component)),
-  select(filter(res_full, is.na(Component.2)), c(Good, Patch, Component = Component.1, Quantity = Quantity.1)) %>% filter(!is.na(Component)),
-  select(filter(res_full, is.na(Component.1)), c(Good, Patch, Component = Component, Quantity = Quantity)) %>% filter(!is.na(Component))
-) %>% filter(Good == sf) %>%
-  group_by(Good, Patch, Component) %>%
-  summarise(Quantity = sum(Quantity), .groups = "drop") %>% 
-  print()
-
-filter(res_full, Good == sf) %>% 
-  print()
-
 # CLEAN UP ----
-rm(res_raw, res_dat, sf)
+rm(res_raw)
