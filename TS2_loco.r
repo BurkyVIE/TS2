@@ -135,7 +135,7 @@ TS2_loco %>%
 ## count of engines per tier and capmax ----
 TS2_loco |> 
   ggplot(mapping = aes(x = Tier, y = Capmax, size = ..n.., color = Rating)) +
-  stat_sum() +
+  stat_sum(alpha = .75) +
   scale_color_manual(values = fcts$col) +
   scale_size(range = c(5, 11)) +
   labs(title = "TRAINSTATION 2") +
