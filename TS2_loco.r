@@ -134,9 +134,9 @@ TS2_loco %>%
 
 ## count of engines per tier and capmax ----
 TS2_loco |> 
-  ggplot(mapping = aes(x = Tier, y = Capmax, size = ..n.., color = Rating)) +
-  scale_fill_manual(values = fcts$col) +
+  ggplot(mapping = aes(x = Tier, y = Capmax, size = ..n.., color = Rarity)) +
   stat_sum() +
+  scale_color_manual(values = fcts$col) +
   labs(title = "TRAINSTATION 2") +
   theme_bw() +
   theme(legend.position = "right") -> p3
