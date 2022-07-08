@@ -52,11 +52,12 @@ wool,120,livestock,120
 
 ## import ---- 
 TS2_reso <- read_delim(TS2_reso_raw, col_types = "cici", lazy = FALSE)  |> 
-  mutate(Basic = is.na(Component)) |>
   arrange(Good)
 
+## find basic recipe ----
 TS2_reso <- TS2_reso |>
-  left_join(select(TS2_reso, c(Good, Basic)), by = c("Component" = "Good"), suffix = c("0", "1"))
+  left_join(select(TS2_reso, c(Good, Basic = Component)), by = c("Component" = "Good")) |> 
+  mutate(Basic = is.na(Basic))
 
 # CLEAN UP ----
 rm(TS2_reso_raw)
