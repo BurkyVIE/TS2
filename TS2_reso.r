@@ -1,6 +1,3 @@
-# LIBRARIES ----
-library(tidyverse)
-
 # DATA ----
 
 ## raw data ----
@@ -47,6 +44,9 @@ milk, 80, livestock, 80
 plastics, 100, crude oil, 100
 wool, 120, livestock, 120
 "
+
+# LIBRARIES ----
+library(tidyverse)
 
 # TIDY ----
 
