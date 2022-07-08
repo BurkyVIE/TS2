@@ -21,10 +21,10 @@ TS2_make <- function (what, units = 1, data = TS2_reso) {
   }
   
   ## loop ----
-  while(!all(work$Basic1)) {
-    remainder <- filter(work, !Basic1) |> pull(Component)
+  while(!all(work$Basic)) {
+    remainder <- filter(work, !Basic) |> pull(Component)
     work <- bind_rows(
-      filter(work, Basic1),
+      filter(work, Basic),
       filter(data, Good %in% remainder)
     )
     }
